@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <head>
-<title>Bus Mall</title>
-<link rel ="stylesheet" href="Bus-Mall.css">
+  <title>Bus Mall</title>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js" charset="utf-8"></script>
+  <link rel ="stylesheet" href="Bus-Mall.css">
 
 </head>
 <body>
-<header>
+  <header>
 
     <nav>
       <ul>
@@ -26,20 +28,27 @@
     <h1>Bus Mall Marketing Survey</h1>
     <p> Select and click on the image of the product that you will be most likely to buy.  After 15 votes, your results will be displayed.</p>
     <img src=""   id = "images">
-    </header>
-    <main>
-    <aside>
+  </header>
+  <main>
+    <aside id = 'View Results'>
     </aside>
     <section>
-    </section>
+      <section class='MainContent'>
+        <section class='Images'>
+          <img id='img1'>
+          <img id='img2'>
+          <img id='img3'>
+        </section>
 
-    <div>
-    <button id="button">Show Image</button>
-    </div>
-
-    </main>
-    <script type = "text/javascript" src= "Bus-Mall.js"></script>
-    </body>
-    <footer>
-    </footer>
-    </html>
+        <div>
+          <button id='Vote Button'>Vote Image</button>
+        </div>
+        <div>
+          <button id='Show Results'>View Results</button>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </main>
+        <script type = "text/javascript" src= "Bus-Mall.js"></script>
+      </body>
+      <footer>
+      </footer>
+      </html>

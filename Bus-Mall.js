@@ -29,6 +29,7 @@ var allProductsNames = ['bag', 'banana', 'bathroom','boots','breakfast','bubbleg
 
 var allProducts = [];
 
+//Now create Constructor Function
 function ProductsConstructor(name, filepath, tally, views){
   this.name = name;
   this.filepath = filepath;
@@ -37,6 +38,8 @@ function ProductsConstructor(name, filepath, tally, views){
   allProducts.push(this);
 }
 
+
+//IIFE to build all the products.
 function createImageAlbum(){
   for (var i = 0; i < allProductsNames.length; i++) {
     new ProductsConstructor(allProductsNames[i], 'img/' + allProductsNames[i] + '.jpg');
@@ -47,7 +50,7 @@ createImageAlbum();
 
 
 
-var button= document.getElementById('button');
+var button= document.getElementById('Vote Button');
 console.log(button);
 
 button.addEventListener('click', function(event){
@@ -56,6 +59,8 @@ button.addEventListener('click', function(event){
 });
 
 function random_imglink(){
+
+//This is my storage bank before I created the Image Album.
 //   var myImages= [
 //     {src:'img/bag.jpg'},
 //   {src:'img/banana.jpg'},
@@ -85,10 +90,10 @@ function random_imglink(){
 
 
 //Calling all products in array and changing the filepath.
-var preStuff = [];
+var changeFilepath = [];
 for (var i = 0; i <  allProducts.length; i++) {
-  preStuff[i] = new Image();
-  preStuff[i].src = allProducts[i].filepath;
+  changeFilepath[i] = new Image();
+  changeFilepath[i].src = allProducts[i].filepath;
 }
 
 //Create random image number
@@ -97,7 +102,7 @@ function getRandomInt(min,max)
 //return Math.floor(Math.random() * (max - min + 1)) + min;
 
 sam = Math.floor(Math.random() * (max - min + 1)) + min;
-  return preStuff[sam];
+  return changeFilepath[sam];
 }
 
 //Removes the previous images.
@@ -107,12 +112,24 @@ for (var p = 0; p < images.length; p++) {
 }
 
 
-for (var i = 0; i < 3; i++) {
-  // 0 being the first image and preStuff.length - 1 is  last image.
-  var newImage = getRandomInt(0, preStuff.length - 1);
-  //Displays the image.
-  document.body.appendChild(newImage);
-  console.log('newImage: ', newImage);
+// for (var i = 0; i < 3; i++) {
+//   // 0 being the first image and changeFilepath.length - 1 is  last image.
+//   var newImage = getRandomInt(0, changeFilepath.length - 1);
+//   //Displays the image.
+//   document.body.appendChild(newImage);
+//   //console.log('newImage: ', newImage);
+// }
+
+displayImages: function(){
+  this.imgObjectOne= allProducts[this.getRandomInt()];
+  this.imgObjectTwo=
+  allProducts[this.getRandomInt()];
+  this.imgObjectThree=
+  allProducts[this.getRandomInt()];
+
+  if(this.imgObjectOne===this.imgObjectTwo||this.imgObjectOne===this.imgObjectThree|| this.imgObjectTwo===this.imgObjectThree){
+    this.displayImages();
+  }
 }
 
 
