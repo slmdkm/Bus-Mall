@@ -9,9 +9,9 @@
 <body>
   <header>
 
-    <nav>
-      <ul>
-        <li>
+    <nav class = "navlists" >
+      <ul >
+        <li >
           <a href="Home.html">Home</a>
         </li>
         <li>
@@ -27,22 +27,24 @@
     </nav>
     <h1>Bus Mall Marketing Survey</h1>
     <p> Select and click on the image of the product that you will be most likely to buy.  After 15 votes, your results will be displayed.</p>
-    <img src=""   id = "images">
+    <img src="" id = "images">
   </header>
   <main>
     <aside id = 'View Results'>
     </aside>
     <section>
-      <section class='MainContent'>
-        <section class='Images'>
+
+        <section class='Images' id='ImageAlbum'>
           <img id='img1'>
           <img id='img2'>
           <img id='img3'>
         </section>
-
         <div>
-          <button id='Vote Button'>Vote Image</button>
+          <button id='VoteButton'>Vote Image</button>
         </div>
+        </section>
+
+
         <div>
           <button id='Show Results'>View Results</button>
           <canvas id="myChart" width="400" height="400"></canvas>

@@ -1,5 +1,5 @@
 body{
-  background-color: lightblue;
+  background-color: #FFD83F;
 }
 
 h1{
@@ -8,4 +8,10 @@ h1{
 }
 p{
   text-align: center;
+}
+.images{
+  border: solid black 2px;
+}
+.navlists{
+  color: white;
 }
