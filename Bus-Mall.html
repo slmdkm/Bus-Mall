@@ -10,10 +10,10 @@
 <body>
   <header>
 
-  <img id="logo" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSIMeY5upm3NCRUUa5MBPECkFTlGuyDxuUKtZbdYVEvMkcaneWY9g"/>
-<div class="head-text">
-  <span class= "title"><h1>Bus Mall Marketing Survey</h1></span><br/>
-</div>
+    <img id="logo" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSIMeY5upm3NCRUUa5MBPECkFTlGuyDxuUKtZbdYVEvMkcaneWY9g"/>
+    <div class="head-text">
+      <span class= "title"><h1>Bus Mall Marketing Survey</h1></span><br/>
+    </div>
     <nav class = "navlists" >
       <ul >
         <li class="one">
@@ -31,35 +31,44 @@
       </ul>
     </nav>
   </div>
-  </header>
+</header>
 
-    <img src="" id = "images">
+<!--Main Container  -->
+<div id="container">
 
-  <main>
+  <!--Sidebar  -->
+  <div class="sidebar">
     <aside id = 'View-Results'><h3>Results!</h3>
+      <button id='Show Results'>View Results</button>
       <ul>
         <ul>
-    </aside>
-    <section>
+        </aside>
+      </div>
 
-        <section class='Images' id='ImageAlbum'>
-          <img id='img1'>
-          <img id='img2'>
-          <img id='img3'>
+      <!--Main Content  -->
+
+      <div class="content">
+        <section>
+          <img src="" id = "images">
+          <section class='Images' id='ImageAlbum'>
+            <img id='img1'>
+            <img id='img2'>
+            <img id='img3'>
+          </section>
+          <div class="ButtonDiv">
+            <button id='VoteButton'>Vote!</button>
+          </div>
         </section>
-        <div>
-          <button id='VoteButton'>Vote Image</button>
-        </div>
-        </section>
+      </div>
+    </div>
+    <!--End of Container - include chart later  -->
+    <div class="chart">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
 
-
-        <div>
-          <button id='Show Results'>View Results</button>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </main>
-        <script type = "text/javascript" src= "Bus-Mall.js"></script>
-      </body>
-      <footer>
+    <script type = "text/javascript" src= "Bus-Mall.js"></script>
+  </body>
+  <footer>
 
     <img class= "codefellows" src = "data:image/png;base64,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"/>
     <ul>
@@ -67,5 +76,5 @@
 
     </ul>
 
-      </footer>
-      </html>
+  </footer>
+  </html>
