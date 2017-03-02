@@ -61,10 +61,10 @@ var tracker = {
   //Image Album is an ID in HTML
 
   //Button ID
-  showResultsEl: document.getElementById('Show Results'),
+  showResultsEl: document.getElementById('Show-Results'),
 
   //Aside ID
-  resultsEl: document.getElementById('View Results'),
+  resultsEl: document.getElementById('View-Results'),
 
   //Show Results is an Id in HTML
 
@@ -144,7 +144,7 @@ var tracker = {
     for (var i in allProducts) {
       var liEl = document.createElement('li');
 
-      liEl.textContent = allProducts[i].name + ':' + allProducts[i].tally + 'votes';
+      liEl.textContent = allProducts[i].name + ':         ' + allProducts[i].tally + ' votes';
       ulEl.appendChild(liEl);
     }
 
@@ -156,67 +156,3 @@ var tracker = {
 tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
 tracker.displayImages();
-
-
-// function random_imglink(){
-
-//This is my storage bank before I created the Image Album.
-//   var myImages= [
-//     {src:'img/bag.jpg'},
-//   {src:'img/banana.jpg'},
-//   {src:'img/bathroom.jpg'},
-//   {src:'img/boots.jpg'},
-//   {src:'img/breakfast.jpg'},
-//   {src:'img/bubblegum.jpg'},
-//   {src:'img/chair.jpg'},
-//   {src:'img/cthulhu.jpg'},
-//   {src:'img/dog-duck.jpg'},
-//   {src:'img/dragon.jpg'},
-//   {src:'img/pet-sweep.jpg'},
-//   {src:'img/pen.jpg'},
-//   {src:'img/scissors.jpg'},
-//   {src:'img/shark.jpg'},
-//   {src:'img/sweep.jpg'},
-//   {src:'img/tauntaun.jpg'},
-//   {src:'img/unicorn.jpg'},
-//   {src:'img/usb.jpg'},
-//   {src:'img/water-can.jpg'},
-//   {src:'img/wine-glass.jpg'}
-// ];
-
-// img1: documentElementById('img1',[0]),
-// img2: documentElementById('img2',[1]),
-// img3: documentElementById('img3',[2])
-
-
-// Calling all products in array and changing the filepath.
-
-// var changeFilepath = [];
-// for (var i = 0; i <  allProducts.length; i++) {
-//   changeFilepath[i] = new Image();
-//   changeFilepath[i].src = allProducts[i].filepath;
-// }
-
-// //Create random image number
-// function getRandomInt(min,max)
-// {
-//   //return Math.floor(Math.random() * (max - min + 1)) + min;
-//
-//   sam = Math.floor(Math.random() * (max - min + 1)) + min;
-//   return changeFilepath[sam];
-// }
-//
-// //Removes the previous images.
-// var images = document.getElementsByTagName('img');
-// for (var p = 0; p < images.length; p++) {
-//   images[p].parentNode.removeChild(images[p]);}
-//
-//
-//
-// // for (var i = 0; i < 3; i++) {
-// //   // 0 being the first image and changeFilepath.length - 1 is  last image.
-// //   var newImage = getRandomInt(0, changeFilepath.length - 1);
-// //   //Displays the image.
-// //   document.body.appendChild(newImage);
-// //   //console.log('newImage: ', newImage);
-// // }
