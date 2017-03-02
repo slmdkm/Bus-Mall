@@ -1,11 +1,145 @@
 body{
-  background-color: lightblue;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFD83F;
+}
+header{
+  padding-bottom: 60px;
+  border-bottom: solid black 2px;
+
+}
+.head-text{
+  display: inline-block;
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  float: right;
+  padding:8px;
+}
+li.one {
+
+  border-style: solid;
+  border-top-left-radius: .8em;
+  border-top-right-radius: .8em;
+
+}
+li.two {
+  border-style: solid;
+  border-top-right-radius: .8em;
+  border-top-left-radius: .8em;
+}
+
+li.three {
+  border-style: solid;
+  border-top-right-radius: .8em;
+  border-top-left-radius: .8em;
+}
+
+li.four{
+  border-style: solid;
+  border-top-right-radius: .8em;
+  border-top-left-radius: .8em;
+}
+a{
+  padding-left: 10px;
+  padding-right: 10px;
+  color: black;
+  text-decoration: none;
+}
+header img{
+  display: inline-block;
+  float:left;
+}
+.
+aside {
+  border: #FFE8B2 solid 2px;
+  width: 200px;
+  height:300px;
+  margin-top: : 40px;
+}
+#Show-Results{
+width:185px;
+}
+
+.container{
+  background-color: #FFD83F;
+  margin: auto;
+  border: 1px solid;
+  text-align: left;
+}
+.sidebar{
+  display: inline-block;
+  float:left;
+  width:200px;
+  background-color: #FFE8B2;
+  padding: 15px,10px,15px,20px;
+  text-align: center;
+  height:400px;
+
+}
+.content{
+
+  margin: 0px,0px,0px 300px;
+  padding:0,20px,20px,20px;
 }
 
 h1{
-  font-size: 24px;
+  font-size: 36px;
+  font-style: italic;
   text-align: center;
+  padding-left: 40px;
+  margin-top: 40px
+
+}
+.title{
+
+  padding-top: 75px;
+
 }
 p{
   text-align: center;
+}
+.Images{
+  text-align: center;
+}
+.Images img{
+  max-width: 200px;
+  padding-left: 20px;
+  padding-top: 25px;
+
+}
+.codefellows{
+  height:25px;
+  width: 25px;
+}
+footer{
+  text-align: center;
+  text-decoration: none;
+  bottom: 0;
+  width: auto;
+}
+.footer-logo{
+  text-decoration: none;
+}
+ul {
+  text-decoration: none
+}
+li{
+  text-align: left;
+}
+#VoteButton{
+  border: #FFE8B2 solid 2px;
+  width: 400px;
+  height: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  position: static;
+  margin-top: 15px;
+  background-color: #FFB400
+}
+.ButtonDiv{
+  text-align: center;
+
 }
