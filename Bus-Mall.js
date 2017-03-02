@@ -108,7 +108,7 @@ var tracker = {
       tracker.checkClicks();
       if (e.target.id === tracker.imgObjectOne.name ||
       e.target.id === tracker.imgObjectTwo.name ||
-      e.target.id === tracker.imgObjectThree) {
+      e.target.id === tracker.imgObjectThree.name) {
 
         tracker.clicks++;
         tracker.tallyVotes(e.target.id);
@@ -122,7 +122,7 @@ var tracker = {
   tallyVotes: function (elId) {
     for (var i in allProducts) {
       if (elId === allProducts[i].name) {
-        allProducts[i].votes += 1;
+        allProducts[i].tally += 1;
         console.log(allProducts[i]);
 
         //Breaks, it's stop iterating, we don't need to go any further.
@@ -144,11 +144,11 @@ var tracker = {
     for (var i in allProducts) {
       var liEl = document.createElement('li');
 
-      liEl.textContent = allProducts[i].name + ':' + allProducts[i].votes;
+      liEl.textContent = allProducts[i].name + ':' + allProducts[i].tally + 'votes';
       ulEl.appendChild(liEl);
     }
 
-    this.resultEl.appendChild(ulEl);
+    this.showResultsEl.appendChild(ulEl);
   },
 };
 
@@ -157,14 +157,7 @@ tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
 tracker.displayImages();
 
-// var button= document.getElementById('Vote Button');
-// console.log(button);
-//
-// button.addEventListener('click', function(event){
-//   console.log('hit here?');
-//   random_imglink();
-// });
-//
+
 // function random_imglink(){
 
 //This is my storage bank before I created the Image Album.
