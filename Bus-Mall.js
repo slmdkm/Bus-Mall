@@ -27,9 +27,6 @@ var allProductsNames = ['bag',  'banana',  'bathroom', 'boots', 'breakfast', 'bu
 
 var allProducts = [];
 var clickChart = [];
-var samData = localStorage.getItem('samChart');
-// myChart.push.data.dataset[0].data(this.tally);
-// data.dataset[0].data.
 
 //Now create Constructor Function
 function ProductsConstructor(name, filepath, tally, views) {
@@ -42,12 +39,24 @@ function ProductsConstructor(name, filepath, tally, views) {
 }
 
 //IIFE to build all the products.
+//(JSON - this builds each product object)
 (function createImageAlbum() {
   for (var i = 0; i < allProductsNames.length; i++) {
     new ProductsConstructor(allProductsNames[i]);
   }
-
-  console.log(allProducts);
+//JSON - loads the numbers from local storage
+  var stringifiedAllProducts =
+  localStorage.getItem('stringfiedAllProducts');
+  var parsedAllProducts = JSON.parse(stringifiedAllProducts);
+  console.log(stringifiedAllProducts);
+  console.log(parsedAllProducts); // old products with counts from last time
+  console.log(allProducts); // new products with zeroes
+//JSON - corrects the counts on the product object with the count from local storage.
+  for (var i = 0; i < parsedAllProducts.length; i++) {
+    console.log('new product: ', allProducts[i]);
+    console.log('old product: ', parsedAllProducts[i]);
+    allProducts[i].tally = parsedAllProducts[i].tally;
+  }
 })();
 
 //createImageAlbum();
@@ -123,6 +132,7 @@ var tracker = {
       }
 
       dataSet1();
+      localStorage.setItem('stringfiedAllProducts', JSON.stringify(allProducts));
     },
 
   //so if elId is a bag it will vote 1, if it's something else it will pass until it finds bag and then tallies it.  It is finding the object so it matches the clicked image....
@@ -176,9 +186,6 @@ tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
 tracker.displayImages();
 
-
-
-
 //JSON
-// var stringProducts = JSON.stringify(allProducts);
-// localStorage.setItem('products', stringProducts);
+
+localStorage.getItem('stringfiedAllProducts');
