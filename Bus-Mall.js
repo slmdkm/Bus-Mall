@@ -26,6 +26,10 @@
 var allProductsNames = ['bag',  'banana',  'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 var allProducts = [];
+var clickChart = [];
+var samData = localStorage.getItem('samChart');
+// myChart.push.data.dataset[0].data(this.tally);
+// data.dataset[0].data.
 
 //Now create Constructor Function
 function ProductsConstructor(name, filepath, tally, views) {
@@ -34,6 +38,7 @@ function ProductsConstructor(name, filepath, tally, views) {
   this.tally = 0;//number of clicks
   this.views = 0;//number of times shown
   allProducts.push(this);
+
 }
 
 //IIFE to build all the products.
@@ -55,6 +60,8 @@ var tracker = {
   imgObjOne: null,
   imgObjTwo: null,
   ImgObjThree: null,
+  chartImages:[],
+  chartTally:[],
 
   imageAlbumEl: document.getElementById('ImageAlbum'),
 
@@ -114,6 +121,8 @@ var tracker = {
         tracker.tallyVotes(e.target.id);
         tracker.displayImages();
       }
+
+      dataSet1();
     },
 
   //so if elId is a bag it will vote 1, if it's something else it will pass until it finds bag and then tallies it.  It is finding the object so it matches the clicked image....
@@ -133,6 +142,7 @@ var tracker = {
   },
 
   renderResults: function () {
+    console.log('renderResults just got called');
     //createUL
     //creat each of the LI and add content
     //append each li to the ul
@@ -144,15 +154,31 @@ var tracker = {
     for (var i in allProducts) {
       var liEl = document.createElement('li');
 
-      liEl.textContent = allProducts[i].name + ':         ' + allProducts[i].tally + ' votes';
+      liEl.textContent = allProducts[i].name + ':\t\t\t\t' + allProducts[i].tally + ' votes';
       ulEl.appendChild(liEl);
     }
 
     this.showResultsEl.appendChild(ulEl);
+    drawChart();
   },
 };
+
+function dataSet1(){
+  console.log('dataSet1 just got called');
+  for (var i=0; i < allProducts.length; i++){
+    clickChart[i]= allProducts[i].tally;
+  }
+  console.log('clickChart: ', clickChart);
+}
 
 //Event is listening to image and section
 tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
 tracker.displayImages();
+
+
+
+
+//JSON
+// var stringProducts = JSON.stringify(allProducts);
+// localStorage.setItem('products', stringProducts);
