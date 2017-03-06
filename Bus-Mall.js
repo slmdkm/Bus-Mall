@@ -51,7 +51,7 @@ function ProductsConstructor(name, filepath, tally, views) {
   console.log(stringifiedAllProducts);
   console.log(parsedAllProducts); // old products with counts from last time
   console.log(allProducts); // new products with zeroes
-//JSON - corrects the counts on the product object with the count from local storage.
+// JSON - corrects the counts on the product object with the count from local storage.
   for (var i = 0; i < parsedAllProducts.length; i++) {
     console.log('new product: ', allProducts[i]);
     console.log('old product: ', parsedAllProducts[i]);
