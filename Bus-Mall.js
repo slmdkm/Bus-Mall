@@ -46,7 +46,7 @@ function ProductsConstructor(name, filepath, tally, views) {
   }
 //JSON - loads the numbers from local storage
   var stringifiedAllProducts =
-  localStorage.getItem('stringfiedAllProducts');
+  localStorage.getItem('stringifiedAllProducts');
   var parsedAllProducts = JSON.parse(stringifiedAllProducts);
   console.log(stringifiedAllProducts);
   console.log(parsedAllProducts); // old products with counts from last time
@@ -59,7 +59,9 @@ function ProductsConstructor(name, filepath, tally, views) {
   }
 })();
 
-//createImageAlbum();
+
+
+
 
 //Properties: Begin with a null value.
 var tracker = {
@@ -132,7 +134,7 @@ var tracker = {
       }
 
       dataSet1();
-      localStorage.setItem('stringfiedAllProducts', JSON.stringify(allProducts));
+      localStorage.setItem('stringifiedAllProducts', JSON.stringify(allProducts));
     },
 
   //so if elId is a bag it will vote 1, if it's something else it will pass until it finds bag and then tallies it.  It is finding the object so it matches the clicked image....
@@ -184,8 +186,16 @@ function dataSet1(){
 //Event is listening to image and section
 tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
+
+// function clearLocalStorage(){
+//   localStorage.clear();
+//   allProducts = [];
+// }
+//
+// var clearListButton = document.getElementById('clearlist');
+// clearListButton.addEventListener('click', clearLocalStorage)
 tracker.displayImages();
 
 //JSON
 
-localStorage.getItem('stringfiedAllProducts');
+localStorage.getItem('stringifiedAllProducts');
