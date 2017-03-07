@@ -44,148 +44,151 @@ function ProductsConstructor(name, filepath, tally, views) {
   for (var i = 0; i < allProductsNames.length; i++) {
     new ProductsConstructor(allProductsNames[i]);
   }
-//JSON - loads the numbers from local storage
+  //JSON - loads the numbers from local storage
   var stringifiedAllProducts =
-  localStorage.getItem('stringfiedAllProducts');
+  localStorage.getItem('stringifiedAllProducts');
   var parsedAllProducts = JSON.parse(stringifiedAllProducts);
   console.log(stringifiedAllProducts);
   console.log(parsedAllProducts); // old products with counts from last time
   console.log(allProducts); // new products with zeroes
-//JSON - corrects the counts on the product object with the count from local storage.
-  for (var i = 0; i < parsedAllProducts.length; i++) {
-    console.log('new product: ', allProducts[i]);
-    console.log('old product: ', parsedAllProducts[i]);
-    allProducts[i].tally = parsedAllProducts[i].tally;
-  }
-})();
+  // JSON - corrects the counts on the product object with the count from local storage.
+  if (typeof(localStorage.getItem('stringifiedAllProducts')) === 'string') {
+    for (var i = 0; i < parsedAllProducts.length; i++) {
+      console.log('new product: ', allProducts[i]);
+      console.log('old product: ', parsedAllProducts[i]);
+      allProducts[i].tally = parsedAllProducts[i].tally;
+    }}
+  })();
 
-//createImageAlbum();
 
-//Properties: Begin with a null value.
-var tracker = {
-  imageOneEl: document.getElementById('img1'),
-  imageTwoEl: document.getElementById('img2'),
-  imageThreeEl: document.getElementById('img3'),
-  imgObjOne: null,
-  imgObjTwo: null,
-  ImgObjThree: null,
-  chartImages:[],
-  chartTally:[],
 
-  imageAlbumEl: document.getElementById('ImageAlbum'),
 
-  //Image Album is an ID in HTML
 
-  //Button ID
-  showResultsEl: document.getElementById('Show-Results'),
+  //Properties: Begin with a null value.
+  var tracker = {
+    imageOneEl: document.getElementById('img1'),
+    imageTwoEl: document.getElementById('img2'),
+    imageThreeEl: document.getElementById('img3'),
+    imgObjOne: null,
+    imgObjTwo: null,
+    ImgObjThree: null,
+    chartImages:[],
+    chartTally:[],
 
-  //Aside ID
-  resultsEl: document.getElementById('View-Results'),
+    imageAlbumEl: document.getElementById('ImageAlbum'),
 
-  //Show Results is an Id in HTML
+    //Image Album is an ID in HTML
 
-  clicks: 1,
+    //Button ID
+    showResultsEl: document.getElementById('Show-Results'),
 
-  getRandomInt: function () {
-    return Math.floor(Math.random() * allProducts.length);
-  },
+    //Aside ID
+    resultsEl: document.getElementById('View-Results'),
 
-  displayImages: function () {
-    this.imgObjectOne = allProducts[this.getRandomInt()];
-    this.imgObjectTwo = allProducts[this.getRandomInt()];
-    this.imgObjectThree = allProducts[this.getRandomInt()];
+    //Show Results is an Id in HTML
 
-    //This refactors and prevents dups
-    if (this.imgObjectOne === this.imgObjectTwo ||
-      this.imgObjectOne === this.imgObjectThree ||
-      this.imgObjectTwo === this.imgObjectThree) {
-      this.displayImages();
-    }
+    clicks: 1,
 
-    this.imageOneEl.src = this.imgObjectOne.filepath;
-    this.imageOneEl.id = this.imgObjectOne.name;
-    this.imageTwoEl.src = this.imgObjectTwo.filepath;
-    this.imageTwoEl.id = this.imgObjectTwo.name;
-    this.imageThreeEl.src = this.imgObjectThree.filepath;
-    this.imageThreeEl.id = this.imgObjectThree.name;
-  },
-
-  checkClicks: function () {
-    if (this.clicks > 14) {
-      this.imageAlbumEl.removeEventListener('click', this.clickHandler);
-      this.showResultsEl.addEventListener('click', function (e) {
-        e.preventDefault();
-        tracker.renderResults();
-      });
-    }
-  },
-
-  clickHandler: function (e) {
-      tracker.checkClicks();
-      if (e.target.id === tracker.imgObjectOne.name ||
-      e.target.id === tracker.imgObjectTwo.name ||
-      e.target.id === tracker.imgObjectThree.name) {
-
-        tracker.clicks++;
-        tracker.tallyVotes(e.target.id);
-        tracker.displayImages();
-      }
-
-      dataSet1();
-      localStorage.setItem('stringfiedAllProducts', JSON.stringify(allProducts));
+    getRandomInt: function () {
+      return Math.floor(Math.random() * allProducts.length);
     },
 
-  //so if elId is a bag it will vote 1, if it's something else it will pass until it finds bag and then tallies it.  It is finding the object so it matches the clicked image....
+    displayImages: function () {
+      this.imgObjectOne = allProducts[this.getRandomInt()];
+      this.imgObjectTwo = allProducts[this.getRandomInt()];
+      this.imgObjectThree = allProducts[this.getRandomInt()];
+
+      //This refactors and prevents dups
+      if (this.imgObjectOne === this.imgObjectTwo ||
+        this.imgObjectOne === this.imgObjectThree ||
+        this.imgObjectTwo === this.imgObjectThree) {
+          this.displayImages();
+        }
+
+        this.imageOneEl.src = this.imgObjectOne.filepath;
+        this.imageOneEl.id = this.imgObjectOne.name;
+        this.imageTwoEl.src = this.imgObjectTwo.filepath;
+        this.imageTwoEl.id = this.imgObjectTwo.name;
+        this.imageThreeEl.src = this.imgObjectThree.filepath;
+        this.imageThreeEl.id = this.imgObjectThree.name;
+      },
+
+      checkClicks: function () {
+        if (this.clicks > 14) {
+          this.imageAlbumEl.removeEventListener('click', this.clickHandler);
+          this.showResultsEl.addEventListener('click', function (e) {
+            e.preventDefault();
+            tracker.renderResults();
+          });
+        }
+      },
+
+      clickHandler: function (e) {
+        tracker.checkClicks();
+        if (e.target.id === tracker.imgObjectOne.name ||
+          e.target.id === tracker.imgObjectTwo.name ||
+          e.target.id === tracker.imgObjectThree.name) {
+
+            tracker.clicks++;
+            tracker.tallyVotes(e.target.id);
+            tracker.displayImages();
+          }
+
+          dataSet1();
+          localStorage.setItem('stringifiedAllProducts', JSON.stringify(allProducts));
+        },
+
+        //so if elId is a bag it will vote 1, if it's something else it will pass until it finds bag and then tallies it.  It is finding the object so it matches the clicked image....
 
 
-  tallyVotes: function (elId) {
-    for (var i in allProducts) {
-      if (elId === allProducts[i].name) {
-        allProducts[i].tally += 1;
-        console.log(allProducts[i]);
+        tallyVotes: function (elId) {
+          for (var i in allProducts) {
+            if (elId === allProducts[i].name) {
+              allProducts[i].tally += 1;
+              console.log(allProducts[i]);
 
-        //Breaks, it's stop iterating, we don't need to go any further.
+              //Breaks, it's stop iterating, we don't need to go any further.
 
-        break;
+              break;
+            }
+          }
+        },
+
+        renderResults: function () {
+          console.log('renderResults just got called');
+          //createUL
+          //creat each of the LI and add content
+          //append each li to the ul
+          //append the ul to the dom and all of this happens on the button click.
+
+          var ulEl = document.createElement('ul');
+
+          //same as for loop: for )var i=0 etc.
+          for (var i in allProducts) {
+            var liEl = document.createElement('li');
+
+            liEl.textContent = allProducts[i].name + ':\t\t\t\t' + allProducts[i].tally + ' votes';
+            ulEl.appendChild(liEl);
+          }
+
+          this.showResultsEl.appendChild(ulEl);
+          drawChart();
+        },
+      };
+
+      function dataSet1(){
+        console.log('dataSet1 just got called');
+        for (var i=0; i < allProducts.length; i++){
+          clickChart[i]= allProducts[i].tally;
+        }
+        console.log('clickChart: ', clickChart);
       }
-    }
-  },
 
-  renderResults: function () {
-    console.log('renderResults just got called');
-    //createUL
-    //creat each of the LI and add content
-    //append each li to the ul
-    //append the ul to the dom and all of this happens on the button click.
+      //Event is listening to image and section
+      tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
 
-    var ulEl = document.createElement('ul');
+      tracker.displayImages();
 
-    //same as for loop: for )var i=0 etc.
-    for (var i in allProducts) {
-      var liEl = document.createElement('li');
-
-      liEl.textContent = allProducts[i].name + ':\t\t\t\t' + allProducts[i].tally + ' votes';
-      ulEl.appendChild(liEl);
-    }
-
-    this.showResultsEl.appendChild(ulEl);
-    drawChart();
-  },
-};
-
-function dataSet1(){
-  console.log('dataSet1 just got called');
-  for (var i=0; i < allProducts.length; i++){
-    clickChart[i]= allProducts[i].tally;
-  }
-  console.log('clickChart: ', clickChart);
-}
-
-//Event is listening to image and section
-tracker.imageAlbumEl.addEventListener('click', tracker.clickHandler);
-
-tracker.displayImages();
-
-//JSON
-
-localStorage.getItem('stringfiedAllProducts');
+      //JSON
+      // localStorage.clear();
+      localStorage.getItem('stringifiedAllProducts');
